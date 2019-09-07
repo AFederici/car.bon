@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <script src="js/charts.js"></script>
     <script>
       var myChart = new Chart(ctx, {...});
     </script>
-
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap"
       rel="stylesheet"
@@ -22,8 +22,11 @@
     <div class="chart">
       <canvas id="timeline"></canvas>
     </div>
-
     <script>
+      //----------
+      //Main Timeline
+      //----------
+
       let timeline = document.getElementById("timeline").getContext("2d");
 
       // Global Options
@@ -31,31 +34,51 @@
       Chart.defaults.global.defaultFontSize = 20;
       Chart.defaults.global.defaultFontColor = "#777";
 
+      var currentMonths = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
+      var tmp;
+      for (var i = 0; i < new Date().getMonth() + 1; i++) {
+        tmp = currentMonths.shift(0);
+        currentMonths.push(tmp);
+      }
+
       let timelineChart = new Chart(timeline, {
         type: "line", // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
-          labels: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-          ],
+          labels: currentMonths,
+
           datasets: [
             {
               label: "CO2 ppm produced",
-              data: [617594, 181045, 153060, 106519, 105162, 95072],
-              //backgroundColor:'green',
-              backgroundColor: [
-                "#2af598"
+              data: [
+                617594,
+                181045,
+                153060,
+                106519,
+                105162,
+                95072,
+                617594,
+                181045,
+                153060,
+                106519,
+                105162,
+                95072
               ],
+              //backgroundColor:'green',
+              backgroundColor: ["#2af598"],
               borderWidth: 1,
               borderColor: "#777",
               hoverBorderWidth: 3,
