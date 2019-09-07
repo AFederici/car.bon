@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <script>
+      var myChart = new Chart(ctx, {...});
+    </script>
+
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap"
       rel="stylesheet"
@@ -14,6 +19,66 @@
     <title>My car.bon dashboard</title>
   </head>
   <body>
-      
+    <div class="chart">
+      <canvas id="timeline"></canvas>
+    </div>
+
+    <script>
+      let timeline = document.getElementById("timeline").getContext("2d");
+
+      // Global Options
+      Chart.defaults.global.defaultFontFamily = "Nunito";
+      Chart.defaults.global.defaultFontSize = 20;
+      Chart.defaults.global.defaultFontColor = "#777";
+
+      let timelineChart = new Chart(timeline, {
+        type: "line", // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "Lowell",
+            "Cambridge",
+            "New Bedford"
+          ],
+          datasets: [
+            {
+              label: "CO2 ppm produced",
+              data: [617594, 181045, 153060, 106519, 105162, 95072],
+              //backgroundColor:'green',
+              backgroundColor: [
+                "#2af598"
+              ],
+              borderWidth: 1,
+              borderColor: "#777",
+              hoverBorderWidth: 3,
+              hoverBorderColor: "#000"
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "CO2 Parts per Million Produced",
+            fontSize: 25
+          },
+          legend: {
+            display: false
+          },
+          layout: {
+            padding: {
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0
+            }
+          },
+          tooltips: {
+            enabled: true
+          }
+        }
+      });
+    </script>
   </body>
 </html>
