@@ -1,0 +1,39 @@
+:root {
+  --color--blue: #08aeea;
+  --color--green: #2af598;
+  --color--text: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 1.7;
+  color: var(--color--text);
+  padding: 2.5vh 2.5vw;
+}
+
+.fullPage--header {
+  background-color: var(--color--blue);
+  background-image: linear-gradient(0deg, var(--color--blue) 0%, var(--color--green) 100%);
+
+  width: 95vw;
+  height: 95vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3em;
+
+  line-height: 1;
+}
