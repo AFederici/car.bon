@@ -22,6 +22,9 @@
     <div class="chart">
       <canvas id="timeline"></canvas>
     </div>
+    <div class="chart">
+      <canvas id="comparison"></canvas>
+    </div>
 
 
     <script>
@@ -77,7 +80,18 @@
                 613,
                 581,
                 823,
-                950
+                950,
+                649,
+                673,
+                499,
+                831,
+                556,
+                174,
+                235,
+                501,
+                613,
+                581,
+                823,
               ],
               //backgroundColor:'green',
               backgroundColor: ["#2af598"],
@@ -92,6 +106,62 @@
           title: {
             display: true,
             text: "CO2 Parts per Million Produced",
+            fontSize: 25
+          },
+          legend: {
+            display: false
+          },
+          layout: {
+            padding: {
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0
+            }
+          },
+          tooltips: {
+            enabled: true
+          }
+        }
+      });
+    </script>
+    <script>
+      //----------
+      //Main Timeline
+      //----------
+
+      let comparison = document.getElementById("comparison").getContext("2d");
+
+      // Global Options
+      Chart.defaults.global.defaultFontFamily = "Nunito";
+      Chart.defaults.global.defaultFontSize = 20;
+      Chart.defaults.global.defaultFontColor = "#777";
+
+      let comparisonChart = new Chart(comparison, {
+        type: "bar", // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+          labels: ["CO2 ppm you produced in the past week","Amount of ppm produced by the average American in one week"],
+
+          datasets: [
+            {
+              label: "CO2 ppm produced",
+              data: [
+                649,
+                673
+              ],
+              //backgroundColor:'green',
+              backgroundColor: ["#2af598", "#08aeea"],
+              borderWidth: 1,
+              borderColor: "#777",
+              hoverBorderWidth: 3,
+              hoverBorderColor: "#000"
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "CO2 Parts per Million Comparison",
             fontSize: 25
           },
           legend: {
